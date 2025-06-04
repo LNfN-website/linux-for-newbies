@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux for Newbies</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #1e1e1e; color: #ddd; margin: 0; padding: 20px; }
+    h1, h2 { color: #00ff88; }
+    .terminal { background: black; padding: 10px; font-family: monospace; color: #00ff00; margin-bottom: 20px; }
+    .button { padding: 10px; background: #00ff88; color: black; border: none; cursor: pointer; margin: 5px; }
+    .output { white-space: pre-wrap; background: #111; padding: 10px; border-left: 3px solid #00ff88; }
+  </style>
+</head>
+<body>
+  <h1>Linux for Newbies</h1>
+  <p>Witaj w przewodniku po systemie Linux dla początkujących! Naucz się podstaw w interaktywny sposób.</p>
+
+  <h2>🔧 Podstawowe komendy Linuksa</h2>
+  <div>
+    <button class="button" onclick="showCommand('ls')">ls</button>
+    <button class="button" onclick="showCommand('pwd')">pwd</button>
+    <button class="button" onclick="showCommand('cd /home')">cd</button>
+    <button class="button" onclick="showCommand('mkdir nowy_folder')">mkdir</button>
+  </div>
+
+  <div class="terminal" id="terminalOutput">Kliknij komendę, by zobaczyć, co robi.</div>
+
+  <h2>🧪 Interaktywny quiz</h2>
+  <p>Jaką komendą sprawdzisz, w jakim katalogu jesteś?</p>
+  <input type="text" id="quizInput" placeholder="wpisz komendę">
+  <button class="button" onclick="checkQuiz()">Sprawdź</button>
+  <div class="output" id="quizOutput"></div>
+
+  <script>
+    function showCommand(cmd) {
+      let descriptions = {
+        'ls': 'ls - wyświetla listę plików w katalogu.',
+        'pwd': 'pwd - pokazuje pełną ścieżkę katalogu, w którym się znajdujesz.',
+        'cd /home': 'cd - zmienia katalog. Np. cd /home przeniesie cię do katalogu /home.',
+        'mkdir nowy_folder': 'mkdir - tworzy nowy folder o nazwie nowy_folder.'
+      };
+      document.getElementById('terminalOutput').innerText = descriptions[cmd];
+    }
+
+    function checkQuiz() {
+      let input = document.getElementById('quizInput').value.trim();
+      let output = document.getElementById('quizOutput');
+      if (input === 'pwd') {
+        output.innerText = '✅ Dobrze! Komenda pwd pokazuje twoją aktualną lokalizację w systemie.';
+      } else {
+        output.innerText = '❌ Niepoprawnie. Spróbuj jeszcze raz.';
+      }
+    }
+  </script>
+</body>
+</html>
